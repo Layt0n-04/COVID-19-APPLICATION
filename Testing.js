@@ -1,5 +1,7 @@
 var axios = require("axios").default;
 var inquirer = require("inquirer");
+//including table packages 
+const { table } = require('table');
 
 // Create a "Prompt" with a series of questions.
 inquirer
@@ -23,13 +25,28 @@ inquirer
   };
   axios.request(options).then(function (response) {
       var provinces = response.data[0].provinces
+
+      const data = [
+        ["Province:", "Confirmed Cases:", "People Recovered:","Deaths:", "Active Cases:"]
+      ];
+      // table settings     
+      const config = {
+        columnDefault: {
+          width: 16,
+        },
+        header: {
+          alignment: 'center',
+          content: 'Covid-19 stats \n' + covidStats.country.toUpperCase(),
+        },
+      }
+  
+  
       for (var i = 0; i < provinces.length; i++){
-        console.log("In " + provinces[i].province) 
-        console.log(provinces[i].confirmed + " people are confirmed to have contracted Covid")
-        console.log(provinces[i].recovered + " people have succesfully recovered from Covid")
-        console.log(provinces[i].deaths + " people have died from Covid")
-        console.log(provinces[i].active + " people still have Covid")
+        data.push([provinces[i].province, provinces[i].confirmed, provinces[i].recovered, provinces[i].deaths, provinces[i].active])
         };
+        // table being logged here 
+        console.log(table(data, config));
+
     var longitude = (response.data[0].longitude)
     var latitude = (response.data[0].latitude)
     inquirer

@@ -4,11 +4,20 @@ const { table } = require('table');
 var NodeGeocoder = require("node-geocoder");
 var weather = require("weather-js");
 const CFonts = require ('cfonts')
+const ora = require ('ora');
 // Create a "Prompt" with a series of questions.
+
+const spinner = ora('Loading complete!').succeed();
+      
+setTimeout(() => {
+  spinner.color = 'yellow';
+  spinner.text = 'Loading Complete!';
+}, 1000);
 inquirer
   .prompt([
     // Here we ask the user for what country they are looking for.
-    
+
+
      
     {  
             type: "input",
@@ -25,7 +34,8 @@ inquirer
         headers: {
           'x-rapidapi-key': '9ea6446dd8mshf4965f7f2bdf857p12bdd8jsnc7eaee27c0f8',
           'x-rapidapi-host': 'covid-19-data.p.rapidapi.com'
-        }
+        } 
+        
       };
       CFonts.say('Here is your request!', {
         font: 'block',              
@@ -41,7 +51,8 @@ inquirer
         transitionGradient: false, 
         env: 'node'                 
       });
-
+      
+    
   axios.request(options).then(function (response){
       console.log (response.data[0])
       var countryTotalStats = response.data[0]
@@ -61,7 +72,7 @@ inquirer
           { alignment: 'right' },
           { alignment: 'right' },
           {truncate: 100}
-        ],
+        ], 
         header: {
           alignment: 'center',
           content: 'Covid-19 Total stats for \n' + countryTotalStats.country.toUpperCase(),

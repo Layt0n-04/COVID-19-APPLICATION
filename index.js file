@@ -6,7 +6,7 @@ var weather = require("weather-js");
 const CFonts = require ('cfonts')
 const ora = require ('ora');
 // Create a "Prompt" with a series of questions.
-
+//Create a spinner to indicate that the application is ready
 const spinner = ora('Loading complete!').succeed();
       
 setTimeout(() => {
@@ -235,20 +235,47 @@ inquirer
                           }
                 
                     // Then print the Weather information and complete Address
+                   
                     console.log("\r\n\r\n\r\n");
                 
-                    console.log("Weather Forecast for: " + search);
+                    CFonts.say( "Weather Forecast for: " + search, {
+                      font: 'chrome',             
+                      align: 'left',              
+                      colors: ['redBright'],         
+                      background: 'transparent',  
+                      lineHeight: 1,              
+                      space: true,                
+                      maxLength: '0',           
+                      gradient: false,           
+                      independentGradient: false, 
+                      transitionGradient: false,  
+                      env: 'node'            
+                    });
                 
-                    console.log("Current Temperature: " + result[0].current.temperature + "° F");
+                    CFonts.say("Current Temperature: " + result[0].current.temperature + "° F");
                 
-                    console.log("Sky: " + result[0].current.skytext);
+                    CFonts.say ("Sky: " + result[0].current.skytext);
                 
-                    console.log(
+                   CFonts.say(
                       "Tomorrow's Forecast: Low of " +
                         result[0].forecast[1].low +
                         "° F | High of " +
                         result[0].forecast[1].high +
-                        "° F"
+                        "° F",{
+                          font: 'chrome',              
+                          align: 'left',              
+                          colors: ['redBright'],         
+                          background: 'transparent',  
+                          letterSpacing: 1,           
+                          lineHeight: 1,              
+                          space: true,                
+                          maxLength: '0',            
+                          gradient: false,            
+                          independentGradient: false, 
+                          transitionGradient: false,  
+                          env: 'node' 
+
+                        }
                     );
                 
                     console.log("\r\n\r\n\r\n");
@@ -261,6 +288,7 @@ inquirer
                         name: "tips",
                         default: true
                     }
+                    //these are the tips on how to prevent covid-19
                         ]).then(function(covidT){ 
                         if (covidT.tips){
                           CFonts.say('tips on how to prevent COVID', {
@@ -277,7 +305,9 @@ inquirer
                             transitionGradient: false,  
                             env: 'node'                 
                           });
-                          CFonts.say('1. Always wear a mask to protect yourself. 2. Stay atleast 6 feet from others. 3. Avoid crowds. 4. Get the covid-19 vaccine. 5. Clean your hands often. 6. Avoid close contact with people who are sick. 7. Cover your mouth when you cough or sneeze with a tissue or your arm. 8. Clean frequently touched objects and surfaces daily. 9. Monitor your health weekly.', {
+                          CFonts.say('1. Always wear a mask to protect yourself.'
+                          , {
+
                             font: 'chrome',             
                             align: 'left',             
                             colors: ['redBright'],        
@@ -291,9 +321,122 @@ inquirer
                             transitionGradient: false,  
                             env: 'node'                 
                           });
-                            
-                            
-                            
+
+                          CFonts.say('2. Stay at least 6 feet from others.', {
+                            font: 'chrome',              
+                            align: 'left',              
+                            colors: ['redBright'],         
+                            background: 'transparent',  
+                            letterSpacing: 1,           
+                            lineHeight: 1,              
+                            space: true,                
+                            maxLength: '0',            
+                            gradient: false,            
+                            independentGradient: false, 
+                            transitionGradient: false,  
+                            env: 'node'                 
+                          });
+                          CFonts.say('3. Avoid crowds.', {
+                            font: 'chrome',              
+                            align: 'left',              
+                            colors: ['redBright'],         
+                            background: 'transparent',  
+                            letterSpacing: 1,           
+                            lineHeight: 1,              
+                            space: true,                
+                            maxLength: '0',            
+                            gradient: false,            
+                            independentGradient: false, 
+                            transitionGradient: false,  
+                            env: 'node'                 
+                          });
+                          CFonts.say('4. Get the covid-19 vaccine.', {
+                            font: 'chrome',              
+                            align: 'left',              
+                            colors: ['redBright'],         
+                            background: 'transparent',  
+                            letterSpacing: 1,           
+                            lineHeight: 1,              
+                            space: true,                
+                            maxLength: '0',            
+                            gradient: false,            
+                            independentGradient: false, 
+                            transitionGradient: false,  
+                            env: 'node'                 
+                          });
+                          CFonts.say('5. Clean your hands often.', {
+                            font: 'chrome',              
+                            align: 'left',              
+                            colors: ['redBright'],         
+                            background: 'transparent',  
+                            letterSpacing: 1,           
+                            lineHeight: 1,              
+                            space: true,                
+                            maxLength: '0',            
+                            gradient: false,            
+                            independentGradient: false, 
+                            transitionGradient: false,  
+                            env: 'node'                 
+                          });  
+                          CFonts.say('6. Avoid close contact with people who are sick.', {
+                            font: 'chrome',              
+                            align: 'left',              
+                            colors: ['redBright'],         
+                            background: 'transparent',  
+                            letterSpacing: 1,           
+                            lineHeight: 1,              
+                            space: true,                
+                            maxLength: '0',            
+                            gradient: false,            
+                            independentGradient: false, 
+                            transitionGradient: false,  
+                            env: 'node'                 
+                          });  
+                          CFonts.say('7. Cover your mouth when you cough or sneeze with a tissue or your arm.', {
+                            font: 'chrome',              
+                            align: 'left',              
+                            colors: ['redBright'],         
+                            background: 'transparent',  
+                            letterSpacing: 1,           
+                            lineHeight: 1,              
+                            space: true,                
+                            maxLength: '0',            
+                            gradient: false,            
+                            independentGradient: false, 
+                            transitionGradient: false,  
+                            env: 'node'                 
+                          });  
+                          CFonts.say('8. Clean frequently touched objects and surfaces daily.', {
+                            font: 'chrome',              
+                            align: 'left',              
+                            colors: ['redBright'],         
+                            background: 'transparent',  
+                            letterSpacing: 1,           
+                            lineHeight: 1,              
+                            space: true,                
+                            maxLength: '0',            
+                            gradient: false,            
+                            independentGradient: false, 
+                            transitionGradient: false,  
+                            env: 'node'                 
+                          });  
+                          CFonts.say('9. Monitor your health weekly.', {
+                            font: 'chrome',              
+                            align: 'left',              
+                            colors: ['redBright'],         
+                            background: 'transparent',  
+                            letterSpacing: 1,           
+                            lineHeight: 1,              
+                            space: true,                
+                            maxLength: '0',            
+                            gradient: false,            
+                            independentGradient: false, 
+                            transitionGradient: false,  
+                            env: 'node'                 
+                          });  
+                          
+
+
                         }else{
                           CFonts.say ("Ok have a good day and make sure to be safe by wearing a mask when you go out. :)")
                           }
